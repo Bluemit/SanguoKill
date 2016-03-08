@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class Player {
     public static int counts=0;
     public String name;
-    int id;
+    public int id;
     public int hp;
-    int []hands;
+    public int []hands;
     public int handsNum;
     public int handsLimit;
     boolean isAI;
@@ -44,6 +44,12 @@ public class Player {
         {
             Scanner sc=new Scanner(System.in);
             int cardIndex=sc.nextInt();
+            if (cardIndex>0 && cardIndex<=handsNum)
+            {
+                int cardPush=hands[cardIndex-1];
+                hands[cardIndex-1]=hands[handsNum-1];
+                handsNum-=1;
+            }
         }
         else
         {

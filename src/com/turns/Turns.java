@@ -41,6 +41,16 @@ public class Turns {
     void startNext(int nextcode)
     {
         next=nextcode;
+        if(p1.hp==0)
+        {
+            System.out.print("很遗憾，你输了！");
+            return;
+        }
+        else if(p2.hp==0)
+        {
+            System.out.print("恭喜你，你赢了！");
+            return;
+        }
         if(next==0)
         {
             p1.takeAction();
