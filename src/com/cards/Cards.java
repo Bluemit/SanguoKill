@@ -4,8 +4,8 @@ package com.cards;
  * Created by bluemit on 16-3-7.
  */
 public class Cards {
+    public int [] rawHeap;
     public int [] cardHeap;
-    int [] washedCardHeap;
     int [] b;
     public int heapHead;
     int cardsNum;
@@ -19,20 +19,20 @@ public class Cards {
 
     void createCards()
     {
+        rawHeap=new int[cardsNum];
         cardHeap=new int[cardsNum];
         for(int i=0;i<15;++i)
         {
-            cardHeap[i]=1;//杀
+            rawHeap[i]=1;//杀
         }
         for(int i=15;i<24;++i)
         {
-            cardHeap[i]=2;//闪
+            rawHeap[i]=2;//闪
         }
         for(int i=24;i<30;++i)
         {
-            cardHeap[i]=3;//桃
+            rawHeap[i]=3;//桃
         }
-        washedCardHeap=new int[cardsNum];
         b=new int [cardsNum];
     }
 
@@ -45,8 +45,8 @@ public class Cards {
             if(b[p]==0)
             {
                 b[p] += 1;
-                washedCardHeap[cardsNum-time]=cardHeap[p];
-                System.out.print(convertCard(cardHeap[p]));
+                cardHeap[cardsNum-time]=rawHeap[p];
+                System.out.print(convertCard(rawHeap[p]));
                 time-=1;
             }
         }

@@ -34,6 +34,7 @@ public class Player {
     {
         hands[handsNum]=c0.cardHeap[c0.heapHead];
         handsNum+=1;
+        c0.heapHead+=1;
         c0.checkHeap();
     }
     public void takeAction()
@@ -44,16 +45,25 @@ public class Player {
             Scanner sc=new Scanner(System.in);
             int cardIndex=sc.nextInt();
         }
+        else
+        {
+
+        }
 
     }
     void printinfo()
     {
         System.out.print('\n');
         System.out.print("姓名："+name);
+        System.out.print("  ");
         System.out.print("HP：");
         System.out.print(hp);
+        System.out.print("  ");
         for(int i=0;i<handsNum;++i)
         {
+            System.out.print('[');
+            System.out.print(i+1);
+            System.out.print(']');
             System.out.print(c0.convertCard(hands[i]));
         }
     }

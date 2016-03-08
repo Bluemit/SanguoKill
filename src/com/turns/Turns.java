@@ -28,27 +28,32 @@ public class Turns {
         int next=(int)(Math.random()*2);
         if(next==0)
         {
-            System.out.println("玩家先行");
-            startNext();
+            System.out.print("玩家先行");
+            startNext(next);
         }
         else
         {
-            System.out.println("AI先行");
-            startNext();
+            System.out.print("AI先行");
+            startNext(next);
         }
     }
 
-    void startNext()
+    void startNext(int nextcode)
     {
+        next=nextcode;
         if(next==0)
         {
             p1.takeAction();
             next=1;
+            startNext(1);
+            p2.getcard(c0);
         }
         else
         {
             p2.takeAction();
             next=0;
+            startNext(0);
+            p1.getcard(c0);
         }
     }
 }

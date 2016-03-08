@@ -5,5 +5,5 @@ package com.judge;
  */
 public class Judge
 {
-
+    
 }

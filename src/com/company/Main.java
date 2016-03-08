@@ -1,6 +1,7 @@
 package com.company;
 import com.cards.*;
 import com.player.*;
+import com.turns.Turns;
 
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ public class Main {
         Player p01 = new Player("玩家",false,game0);
         Player p02 = new Player("AI",true,game0);
         System.out.print("\n玩家添加成功！");
+        Turns turn0= new Turns(p01,p02,game0);
 
 
     }
