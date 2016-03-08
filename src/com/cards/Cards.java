@@ -7,48 +7,61 @@ public class Cards {
     public int [] cardHeap;
     int [] washedCardHeap;
     int [] b;
+    public int heapHead;
+    int cardsNum;
     public Cards()
     {
+        cardsNum=30;
+        heapHead=0;
         createCards();
         washCards();
     }
 
     void createCards()
     {
-        cardHeap=new int[20];
-        for(int i=0;i<10;++i)
+        cardHeap=new int[cardsNum];
+        for(int i=0;i<15;++i)
         {
             cardHeap[i]=1;//杀
         }
-        for(int i=10;i<16;++i)
+        for(int i=15;i<24;++i)
         {
             cardHeap[i]=2;//闪
         }
-        for(int i=16;i<20;++i)
+        for(int i=24;i<30;++i)
         {
             cardHeap[i]=3;//桃
         }
-        washedCardHeap=new int[20];
-        b=new int [20];
+        washedCardHeap=new int[cardsNum];
+        b=new int [cardsNum];
     }
 
-    void washCards()
+    public void washCards()
     {
-        int time=20;
+        int time=cardsNum;
         while(time>0)
         {
-            int p=(int)(Math.random()*20-0.5);
+            int p=(int)(Math.random()*cardsNum-0.5);
             if(b[p]==0)
             {
                 b[p] += 1;
-                washedCardHeap[20-time]=cardHeap[p];
+                washedCardHeap[cardsNum-time]=cardHeap[p];
                 System.out.print(convertCard(cardHeap[p]));
+                time-=1;
             }
         }
     }
 
+    public void checkHeap()
+    {
+        if(heapHead==cardsNum-1)
+        {
+            washCards();
+            heapHead=0;
+        }
+    }
 
-    String convertCard(int num)
+    public String convertCard(int num)
     {
         switch (num)
         {
