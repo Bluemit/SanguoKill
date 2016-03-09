@@ -15,9 +15,10 @@ public class Main {
         Cards game0=new Cards();
         Player p01 = new Player("玩家",false,game0);
         Player p02 = new Player("AI",true,game0);
+        p01.opponent=p02;
+        p02.opponent=p01;
         System.out.print("\n玩家添加成功！");
         Turns turn0= new Turns(p01,p02,game0);
-
 
     }
 }

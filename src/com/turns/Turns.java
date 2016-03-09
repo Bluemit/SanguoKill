@@ -11,18 +11,20 @@ public class Turns {
     Player p1;
     Player p2;
     Cards c0;
-    public Turns(Player p1, Player p2,Cards c0)
+
+    public Turns(Player p1, Player p2, Cards c0)
     {
         this.p1=p1;
         this.p2=p2;
         this.c0=c0;
+
         for(int i=0;i<p1.handsLimit;++i)
         {
-            p1.getcard(c0);
+            p1.getCard(c0);
         }
         for(int i=0;i<p2.handsLimit;++i)
         {
-            p2.getcard(c0);
+            p2.getCard(c0);
         }
 
         int next=(int)(Math.random()*2);
@@ -38,9 +40,9 @@ public class Turns {
         }
     }
 
-    void startNext(int nextcode)
+    void startNext(int nextCode)
     {
-        next=nextcode;
+        next=nextCode;
         if(p1.hp==0)
         {
             System.out.print("很遗憾，你输了！");
@@ -55,15 +57,17 @@ public class Turns {
         {
             p1.takeAction();
             next=1;
+            p2.getCard(c0);
             startNext(1);
-            p2.getcard(c0);
+
         }
         else
         {
             p2.takeAction();
             next=0;
+            p1.getCard(c0);
             startNext(0);
-            p1.getcard(c0);
+
         }
     }
 }
